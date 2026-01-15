@@ -1,19 +1,34 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="/static/style.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <title>History</title>
     </head>
     <body>
-        <div class="container">
-            <h1>Conversion History</h1>
-            <a href="/">← Back to Upload</a>
+        <div class="container wide">
+            <header>
+                <h1>ARCHIVΞD<span>LOGS</span></h1>
+                <a href="/" class="btn-secondary" style="margin-bottom: 20px; display: block">← Back to Home</a>
+            </header>
+
             <div class="history-grid">
                 {% for item in conversions %}
                 <div class="history-card">
-                    <p><strong>{{ item['orig_name'] }}</strong></p>
-                    <small>{{ item['upload_time'] }}</small>
-                    <img src="/download/{{ item['ascii_path'] }}" class="thumb" />
-                    <a href="/download/{{ item['ascii_path'] }}" download>Download</a>
+                    <p style="margin: 0; font-weight: bold; font-size: 0.9rem">{{ item['orig_name'] }}</p>
+                    <small style="color: #6c7086">{{ item['upload_time'] }}</small>
+
+                    <div class="thumb-wrapper">
+                        <img src="/download/{{ item['ascii_path'] }}" class="thumb" />
+                    </div>
+
+                    <a
+                        href="/download/{{ item['ascii_path'] }}"
+                        download
+                        style="color: #89b4fa; text-decoration: none; font-size: 0.8rem; font-weight: bold"
+                        >Download</a
+                    >
                 </div>
                 {% endfor %}
             </div>

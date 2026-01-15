@@ -4,15 +4,38 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-        <title>ASCII ART</title>
+        <title>ASCII SHADER</title>
     </head>
     <body>
-        <h1>ASCII SHADER</h1>
-        <form action="/convert" method="post" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" required />
-            <button type="submit">Convert to ASCII</button>
-        </form>
+        <div class="container">
+            <header>
+                <h1>ASCII<span>SHADΞR</span></h1>
+                <p class="subtitle">Convert your images into terminal-style art</p>
+            </header>
 
-        <p><a href="/history" style="color: #007bff; text-decoration: none">View Conversion History →</a></p>
+            <form action="/convert" method="post" enctype="multipart/form-data">
+                <div class="upload-area">
+                    <input type="file" name="image" id="file-upload" accept="image/*" required />
+                    <label for="file-upload" class="custom-file-upload">Choose Image</label>
+                    <p
+                        id="file-name"
+                        style="margin-top: 10px; font-family: monospace; font-size: 0.8rem; color: #6c7086"
+                    >
+                        No file selected
+                    </p>
+                </div>
+                <button type="submit" class="btn-convert">Convert to ASCII</button>
+            </form>
+
+            <a href="/history" class="btn-secondary">View History →</a>
+        </div>
+
+        <script>
+            document.getElementById("file-upload").onchange = function () {
+                document.getElementById("file-name").innerText = this.files[0]
+                    ? this.files[0].name
+                    : "No file selected";
+            };
+        </script>
     </body>
 </html>

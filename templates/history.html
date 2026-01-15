@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Conversion History</h1>
+            <a href="/">← Back to Upload</a>
+            <div class="history-grid">
+                {% for item in conversions %}
+                <div class="history-card">
+                    <p><strong>{{ item['orig_name'] }}</strong></p>
+                    <small>{{ item['upload_time'] }}</small>
+                    <img src="/download/{{ item['ascii_path'] }}" class="thumb" />
+                    <a href="/download/{{ item['ascii_path'] }}" download>Download</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

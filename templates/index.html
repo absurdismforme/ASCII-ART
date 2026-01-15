@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <title>ASCII ART</title>
+    </head>
+    <body>
+        <h1>ASCII SHADER</h1>
+        <form action="/convert" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required />
+            <button type="submit">Convert to ASCII</button>
+        </form>
+
+        <p><a href="/history" style="color: #007bff; text-decoration: none">View Conversion History →</a></p>
+    </body>
+</html>
